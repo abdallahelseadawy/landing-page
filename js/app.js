@@ -20,6 +20,7 @@
 
 const allSections = document.querySelectorAll('section');
 const navigationMenu = document.querySelector('#navbar__list');
+let allSectionsArray = Array.from(allSections);
 
 /**
  * End Global Variables
@@ -76,12 +77,16 @@ function buildingNavMenu() {
 function activateSectionClass(){
     for (let i=0; i<allSections.length; i++){
         //calling the helper function to check if the section is in the viewport or not
-        if (isSectionInViewPort(allSections[i])){
+        if (isSectionInViewPort(allSectionsArray[i])){
             //adding the class
-            allSections[i].classList.add("my-active-class");
+            allSectionsArray[i].classList.add("my-active-class");
+            // Highlighting the navigation menu item
+            navigationMenu.getElementsByClassName("menu__link")[i].classList.add("my-active-class");
         }else{
             //removing the class
-            allSections[i].classList.remove("my-active-class");
+            allSectionsArray[i].classList.remove("my-active-class");
+            // Removing the highlight of the navigation menu item
+            navigationMenu.getElementsByClassName("menu__link")[i].classList.remove("my-active-class");
         }
     }
 }
