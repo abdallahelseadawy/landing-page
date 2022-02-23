@@ -88,6 +88,11 @@ section {
     transition: ease 0.3s all;
 }
 
+a.my-active-class {
+    background: rgb(0, 0, 0);
+    background: linear-gradient(0deg, lightblue 0%, rgba(0, 0, 0, 0) 100%);
+}
+
 /* Header Styles */
 .page__header {
     background: #fff;
@@ -188,6 +193,7 @@ section:nth-of-type(3n + 1) .landing__container::after {
     opacity: 0;
     transition: ease 0.5s all;
 }
+
 
 
 /* ---- Theme State Rules ---- */
