@@ -31,13 +31,8 @@ let allSectionsArray = Array.from(allSections);
 //Boolean function to determine if a section is into ViewPort or not
 function isSectionInViewPort(section) {
     const clientRectangle = section.getBoundingClientRect();
-    //document dimensions without scrollbars
-    const currentDocumentHeight = document.documentElement.clientHeight;
-    const currentDocumentWidth = document.documentElement.clientWidth;
-    //checking if clientRectangle is within window range
-    if (clientRectangle.top >= 0 && clientRectangle.left >= 0
-        && clientRectangle.bottom <= ( window.innerHeight || currentDocumentHeight ) 
-        && clientRectangle.right <= ( window.innerWidth || currentDocumentWidth ) ) 
+    //checking on top of the section to handle the responsive layout of different devices  
+    if (clientRectangle.top >= -100 && clientRectangle.top <= 300) 
         return true;
     else
         return false;
@@ -102,13 +97,13 @@ function activateSectionClass(){
 buildingNavMenu();
 
 // Scroll to section on link click
-for (let i=0; i<allSections.length; i++){
+for (let i=0; i<allSectionsArray.length; i++){
     //Retreiving hyperlinks
     const hyperLink = document.getElementsByTagName('a');      
     //Listenning to the link click in order to navigate to the required section
     hyperLink[i].addEventListener("click", function() {
-        allSections[i].scrollIntoView(
-            {
+        allSectionsArray[i].scrollIntoView(
+            {  
                 behavior: "smooth" //friendly than auto
             }
         );
